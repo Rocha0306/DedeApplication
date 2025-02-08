@@ -7,9 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.1" />
     <PackageReference Include="MongoDB.EntityFrameworkCore" Version="8.2.1" />
+    <PackageReference Include="NRedisStack" Version="0.13.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.3.0" />
   </ItemGroup>
 
 </Project>

@@ -5,6 +5,5 @@ using System.Threading.Tasks;
 
 namespace DedeApplication.DTOs
 {
-public record UsersDTO(string id, string Email, string Password);   
-    
+    public record TokenDTO(string token); 
 }

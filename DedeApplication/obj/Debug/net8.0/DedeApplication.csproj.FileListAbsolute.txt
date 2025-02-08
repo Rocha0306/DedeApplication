@@ -46,3 +46,14 @@ c:\DedeApplication\DedeApplication\bin\Debug\net8.0\MongoDB.EntityFrameworkCore.
 c:\DedeApplication\DedeApplication\bin\Debug\net8.0\SharpCompress.dll
 c:\DedeApplication\DedeApplication\bin\Debug\net8.0\Snappier.dll
 c:\DedeApplication\DedeApplication\bin\Debug\net8.0\ZstdSharp.dll
+c:\DedeApplication\DedeApplication\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+c:\DedeApplication\DedeApplication\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+c:\DedeApplication\DedeApplication\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+c:\DedeApplication\DedeApplication\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+c:\DedeApplication\DedeApplication\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+c:\DedeApplication\DedeApplication\bin\Debug\net8.0\AutoMapper.dll
+c:\DedeApplication\DedeApplication\bin\Debug\net8.0\NetTopologySuite.dll
+c:\DedeApplication\DedeApplication\bin\Debug\net8.0\NRedisStack.dll
+c:\DedeApplication\DedeApplication\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+c:\DedeApplication\DedeApplication\bin\Debug\net8.0\StackExchange.Redis.dll
+c:\DedeApplication\DedeApplication\obj\Debug\net8.0\DedeApplication.sourcelink.json
