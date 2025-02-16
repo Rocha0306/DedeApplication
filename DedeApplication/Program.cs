@@ -8,6 +8,7 @@ using AutoMapper;
 using DedeApplication.Entities;
 using DedeApplication.DTOs;
 using DedeApplication.InterfaceAdapters;
+using DedeApplication.InterfaceAdapters.ExternalServices;
 
 var builder = WebApplication.CreateBuilder(args);
 

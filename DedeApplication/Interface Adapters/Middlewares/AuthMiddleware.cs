@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using DedeApplication.Frameworks_Drivens;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using NRedisStack.Graph;
 using StackExchange.Redis;
 
 namespace DedeApplication.UsersCase
@@ -18,15 +20,13 @@ public class AuthMiddleware {
  
     private readonly RequestDelegate _next;
 
-    private readonly ITokenService _tokenService;
+    private readonly ITokenService _tokenService; 
 
-    private readonly IRedisCache rediscache; 
-
-    public AuthMiddleware(RequestDelegate next, ITokenService tokenService, IRedisCache _redisCache)
+    public AuthMiddleware(RequestDelegate next, ITokenService tokenService)
     {
         _next = next;
         _tokenService = tokenService; 
-        rediscache = _redisCache; 
+       
     }
 
     public async Task Invoke(HttpContext context)
@@ -40,7 +40,6 @@ public class AuthMiddleware {
         var Token = _tokenService.ValidatorToken(UserToken);
 
         if(Token == true) {
-            
             await _next(context);
         }
 

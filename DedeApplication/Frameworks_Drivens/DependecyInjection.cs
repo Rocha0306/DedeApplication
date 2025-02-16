@@ -25,6 +25,8 @@ namespace DedeApplication.Frameworks_Drivens
                 Services.AddScoped<IUsers, Users>();
                 Services.AddScoped<ILogin, Login>();
                 Services.AddScoped<IRedisCache, RedisCache>(); 
+                Services.AddScoped<IAddPatients, AddPatients>(); 
+                Services.AddScoped<IPatients, Patients>(); 
                 return Services;
 
         }

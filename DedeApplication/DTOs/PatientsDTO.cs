@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 namespace DedeApplication.DTOs
 {
         public class PatientsDTO {
-    
-        public string Id { get; set; } 
-        public string Name {get; set;}
+            
+        public string Id = Guid.NewGuid().ToString(); 
+        public string Name {get; set;} 
+
+        public string HospitalName {get;set;}
     }
 }

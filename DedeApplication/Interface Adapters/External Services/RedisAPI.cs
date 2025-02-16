@@ -10,23 +10,25 @@ namespace DedeApplication.InterfaceAdapters.ExternalServices
 {
     public class RedisCache : IRedisCache
     {
-        private readonly ConfigurationOptions configurationOptions = new ConfigurationOptions {
-            EndPoints = {"memcached-13693.c80.us-east-1-2.ec2.redns.redis-cloud.com:13693"},  
-            User = "mc-e0j92", 
-            Password = "YRo0HC71AY0J0SCEBkBuaDAyJaLIu8uJ"
+        private readonly ConfigurationOptions AuthParams = new ConfigurationOptions {
+            EndPoints={"redis-18221.c308.sa-east-1-1.ec2.redns.redis-cloud.com:18221"},
+            User="default",
+            Password="PeNpJuxe1CFhduTZX8id8LnS1CFfycUH"
         };
 
+    
+
         public void PutInCache(string TokenKey, string HospitalName) {
-            ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect(configurationOptions);
-            IDatabase RedisDatabase = connectionMultiplexer.GetDatabase(); 
-            RedisDatabase.StringSet(TokenKey, HospitalName); 
+            var connectionMultiplexer = ConnectionMultiplexer.Connect(AuthParams);
+            IDatabase RedisDatabase = connectionMultiplexer.GetDatabase();
+            RedisDatabase.StringSet(TokenKey, HospitalName);
              
         }
     
-        public string GetFromCache(string TokenKey) {
-            ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect(configurationOptions);
+        public string GetFromCache(string Key) {
+            ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect(AuthParams);
             IDatabase RedisDatabase = connectionMultiplexer.GetDatabase(); 
-            string HospitalName = RedisDatabase.StringGet(TokenKey); 
+            string HospitalName = RedisDatabase.StringGet(Key); 
             return HospitalName; 
         }
     }

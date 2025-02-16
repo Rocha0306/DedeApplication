@@ -20,13 +20,13 @@ namespace DedeApplication.UsersCase.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<PatientsDTO>().ToCollection("Patients");
+            modelBuilder.Entity<Patients>().ToCollection("Patients");
             modelBuilder.Entity<Users>().ToCollection("Users"); 
         }
 
      
 
-        public DbSet<PatientsDTO> Patients {get;set;} 
+        public DbSet<Patients> Patients {get;set;} 
 
         public DbSet<Users> Users {get;set;} 
 

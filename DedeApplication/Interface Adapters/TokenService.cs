@@ -27,16 +27,11 @@ namespace DedeApplication.Frameworks_Drivens
 
         private JwtSecurityToken securityToken = new JwtSecurityToken();
 
-        private readonly IRedisCache rediscache; 
-
-        public TokenService(IRedisCache _rediscache)
-        {
-            rediscache = _rediscache; 
-        }
+      
 
        
 
-        public TokenDTO GeneratorToken(string HospitalName)
+        public string GeneratorToken()
         {
             string TokenKey = "571e5851c09f813ec390b91790c0f276ebafacdf789012914a006992f29278c1"; 
             string Issuer = "Auth"; //Conteudo do Token - Issuer
@@ -46,9 +41,7 @@ namespace DedeApplication.Frameworks_Drivens
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(TokenKey));
             SigningCredentials signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             securityToken = jwtSecurityTokenHandler.CreateJwtSecurityToken(Issuer, Audience, null, NotBefore, Expires, null, signingCredentials); 
-            string FinalToken = jwtSecurityTokenHandler.WriteToken(securityToken); 
-            rediscache.PutInCache(FinalToken, HospitalName); 
-            return new TokenDTO(FinalToken);
+            return jwtSecurityTokenHandler.WriteToken(securityToken); 
 
         }
 

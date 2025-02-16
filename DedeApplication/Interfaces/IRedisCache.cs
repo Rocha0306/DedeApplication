@@ -11,7 +11,7 @@ namespace DedeApplication.Interfaces
 
         public void PutInCache(string TokenKey, string HospitalName); 
 
-         public string GetFromCache(string TokenKey); 
+        public string GetFromCache(string TokenKey); 
         
     }
 }

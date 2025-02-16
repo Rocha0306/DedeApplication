@@ -15,6 +15,7 @@ namespace DedeApplication.Frameworks_Drivens
         {
             CreateMap<UsersDTO, Users>();
             CreateMap<DoctorDTO, UsersDTO>(); 
+            CreateMap<PatientsDTO, Patients>();
         }
     }
 }

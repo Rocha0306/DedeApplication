@@ -37,6 +37,22 @@ namespace DedeApplication.InterfaceAdapters
                 }
 
 
+                //For generic or non exception mapped 
+                catch(Exception excepetion) {
+                         var ResponseExcpetion = httpContext.Response; 
+                ExceptionDTO exceptionDTO = new ExceptionDTO {
+                    Message = "Something went Wrong, please check",  
+                    StackTrace = excepetion.StackTrace
+                }; 
+
+                ResponseExcpetion.ContentType = "application/json"; 
+                ResponseExcpetion.StatusCode = exceptionDTO.StatusCode; 
+                await ResponseExcpetion.WriteAsJsonAsync(exceptionDTO);
+                }
+
+                
+
+
                
 
 

@@ -8,7 +8,7 @@ namespace DedeApplication.Interfaces
 {
     public interface ITokenService
     {
-        public TokenDTO GeneratorToken(string HospitalName); 
+        public string GeneratorToken(); 
 
         public bool ValidatorToken(string UserToken); 
     }
