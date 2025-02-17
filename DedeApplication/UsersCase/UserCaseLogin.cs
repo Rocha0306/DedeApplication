@@ -5,21 +5,21 @@ using StackExchange.Redis;
 
 namespace DedeApplication.UsersCase
 {
-    public class Login : ILogin
+    public class UserCaseLogin : IUserCaseLogin
     {
 
 
-        private readonly KeepData keepData; 
+        private readonly UserCaseKeepData keepData; 
 
-        private readonly IUsers UsersEntity; 
+        private readonly IUsersEntity UsersEntity; 
 
-        public Login(KeepData _keepData, IUsers users)
+        public UserCaseLogin(UserCaseKeepData _keepData, IUsersEntity users)
         {
             keepData = _keepData; 
             UsersEntity = users;
         }
 
-        Users ILogin.Authentication(string CRMorEmail, string Password)
+        UsersEntity IUserCaseLogin.Authentication(string CRMorEmail, string Password)
         {
              
             

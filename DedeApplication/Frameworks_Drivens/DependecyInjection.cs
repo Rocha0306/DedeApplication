@@ -21,12 +21,12 @@ namespace DedeApplication.Frameworks_Drivens
         public static IServiceCollection AllDependencies(this IServiceCollection Services) {
                 Services.AddSingleton<ITokenService, TokenService>();
                 Services.AddScoped<IExternalApis, ExternalAPIs>();
-                Services.AddScoped<IUserRegistration, UserRegistration>();
-                Services.AddScoped<IUsers, Users>();
-                Services.AddScoped<ILogin, Login>();
+                Services.AddScoped<IUserCaseRegistration, UserCaseRegistration>();
+                Services.AddScoped<IUsersEntity, UsersEntity>();
+                Services.AddScoped<IUserCaseLogin, UserCaseLogin>();
                 Services.AddScoped<IRedisCache, RedisCache>(); 
-                Services.AddScoped<IAddPatients, AddPatients>(); 
-                Services.AddScoped<IPatients, Patients>(); 
+                Services.AddScoped<IUserCasePatients, UserCasePatients>(); 
+                Services.AddScoped<IPatientEntity, PatientsEntity>(); 
                 return Services;
 
         }

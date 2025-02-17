@@ -17,7 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var URI = builder.Configuration.GetValue<string>("URI");
 var database = builder.Configuration.GetValue<string>("Database");
-builder.Services.AddDbContext<KeepData>(Options => Options.UseMongoDB(URI, database));
+builder.Services.AddDbContext<UserCaseKeepData>(Options => Options.UseMongoDB(URI, database));
 builder.Services.AddSingleton<ITokenService, TokenService>();
 builder.Services.AllDependencies();
 

@@ -10,20 +10,20 @@ using DedeApplication.DTOs;
 
 namespace DedeApplication.UsersCase
 {
-    public class UserRegistration : IUserRegistration
+    public class UserCaseRegistration : IUserCaseRegistration
     {
 
-        private readonly KeepData keepData; 
+        private readonly UserCaseKeepData keepData; 
 
-        private readonly IUsers UsersEntity; 
+        private readonly IUsersEntity UsersEntity; 
 
-        public UserRegistration(KeepData _keepData, IUsers users)
+        public UserCaseRegistration(UserCaseKeepData _keepData, IUsersEntity users)
         {
             keepData = _keepData; 
             UsersEntity = users;
         }
 
-        public void Registration(Users users)
+        public void Registration(UsersEntity users)
         {
             if(users.Role.Equals("Doctor")) {
                 var UsersDatabase = keepData.Users.FirstOrDefault(x => x.CRM.Equals(users.CRM));

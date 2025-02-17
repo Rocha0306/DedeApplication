@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DedeApplication.Interfaces
 {
-    public interface IMongoDb
+    public interface IPatientEntity
     {
         
     }

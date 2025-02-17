@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DedeApplication.Entities
 {
-    public class Users : IUsers
+    public class UsersEntity : IUsersEntity
     {
    
     public string Id { get; set; }
@@ -23,14 +23,14 @@ namespace DedeApplication.Entities
     public string HospitalName { get; set; }
 
 
-    public Users()
+    public UsersEntity()
     {
     
     }
 
         
 
-        public Users(string id, string name, string email, string role, string hospitalname, string password) 
+        public UsersEntity(string id, string name, string email, string role, string hospitalname, string password) 
     {
         //Secretaria
 
@@ -43,7 +43,7 @@ namespace DedeApplication.Entities
         
     }
 
-    public Users(string id, string name, string email, string crm, string uf, string password, string role, string hospitalname)
+    public UsersEntity(string id, string name, string email, string crm, string uf, string password, string role, string hospitalname)
     {
             //Medico 
 
@@ -58,7 +58,7 @@ namespace DedeApplication.Entities
     }
 
 
-    public Users DoctorRegistration(int DoctorExists, string ResponseApiName, Users users) {
+    public UsersEntity DoctorRegistration(int DoctorExists, string ResponseApiName, UsersEntity users) {
 
         if(DoctorExists.Equals(0)) {
             throw new BadHttpRequestException("CRM not valid or this CRM is not in our data"); 
@@ -88,7 +88,7 @@ namespace DedeApplication.Entities
 
 
 
-    public Users SecretaryRegistration(string status, string result, int score, Users users) {
+    public UsersEntity SecretaryRegistration(string status, string result, int score, UsersEntity users) {
         if(status.Equals("valid")) {
             if(result.Equals("deliverable")) {
                 if(score > 85) {
@@ -113,7 +113,7 @@ namespace DedeApplication.Entities
     }
 
 
-    public void VerifyDuplicateUsers(Users user, Users userdatabase) {
+    public void VerifyDuplicateUsers(UsersEntity user, UsersEntity userdatabase) {
 
         if(user.Role.Equals("Doctor")) {
            if(userdatabase != null) {
@@ -132,7 +132,7 @@ namespace DedeApplication.Entities
     }
 
 
-    public Users VerifyUser(Users user) {
+    public UsersEntity VerifyUser(UsersEntity user) {
         if(user == null) {
             throw new BadHttpRequestException("You cant acess our assets because you dont have account", 403); 
         }

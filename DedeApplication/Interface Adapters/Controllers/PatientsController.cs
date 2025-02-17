@@ -8,6 +8,7 @@ using DedeApplication.DTOs;
 using DedeApplication.Entities;
 using DedeApplication.Interfaces;
 using DedeApplication.UsersCase;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
@@ -18,38 +19,67 @@ namespace DedeApplication.InterfaceAdapters.Controllers
     public class PatientsController : Controller
     {
 
-        private readonly IAddPatients addPatients; 
+        private readonly IUserCasePatients UserCasePatients; 
 
         private readonly IRedisCache redis;
 
-        private readonly IPatients patients; 
+        private readonly IUserCaseRegistration patients; 
 
         private readonly IMapper mapper; 
 
-        public PatientsController(IRedisCache IRedis, IMapper AutoMapper, IAddPatients add, IPatients _patients)
+        public PatientsController(IRedisCache IRedis, IMapper AutoMapper, IUserCasePatients add, IUserCaseRegistration _patients)
         {
            redis = IRedis;  
            mapper = AutoMapper; 
-           addPatients = add;  
+           UserCasePatients = add;  
            patients = _patients;   
         }
 
-          public Patients GetHospitalPatient(PatientsDTO patientsDTO) {
+          public PatientsEntity GetHospitalPatientAndConvert(PatientsDTO patientsDTO) {
             string TokenKey = Request.Headers["Authorization"];
             string HospitalName = redis.GetFromCache(TokenKey); 
             patientsDTO.HospitalName = HospitalName;
-            var Patients = new Patients();
+            var Patients = new PatientsEntity();
             mapper.Map(patientsDTO, Patients); 
             return Patients; 
         }
 
+        public string GetHospitalName() {
+          string TokenKey = Request.Headers["Authorization"];
+          return redis.GetFromCache(TokenKey); 
+        
+        }
+
        [HttpPost] 
-       public ActionResult<Patients> GetPatients([FromBody] PatientsDTO patientsDTO) {
-         var Patients = GetHospitalPatient(patientsDTO);
-         return Ok(addPatients.CreatePatients(Patients)); 
+       public ActionResult<PatientsEntity> PostPatients([FromBody] PatientsDTO patientsDTO) {
+         var Patients = GetHospitalPatientAndConvert(patientsDTO);
+         return Ok(UserCasePatients.CreatePatients(Patients)); 
         
          
 
+       }
+
+       [HttpGet]
+       public ActionResult<List<PatientsEntity>> GetPatients() {
+          string HospitalName = GetHospitalName();
+          return Ok(UserCasePatients.GetPatients(HospitalName)); 
+         
+          
+       }
+
+
+       [HttpPut]
+       public ActionResult<PatientsEntity> UpdatePatients([FromBody] PatientsDTO patientsDTO) {
+            var PatientsEntity = GetHospitalPatientAndConvert(patientsDTO); 
+            var DataEdited = UserCasePatients.UpdatePatients(PatientsEntity); 
+            return Ok(DataEdited); 
+       }
+
+       [HttpDelete]
+       public ActionResult<PatientsEntity> DeletePatients([FromBody] PatientsDTO patientsDTO) {
+            var PatientsEntity = GetHospitalPatientAndConvert(patientsDTO); 
+            UserCasePatients.DeletePatients(PatientsEntity); 
+            return Ok("The data was removed from database"); 
        }
     }
 }

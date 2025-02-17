@@ -17,13 +17,13 @@ namespace DedeApplication.InterfaceAdapters.Controllers
 
        
 
-        private readonly ILogin login; 
+        private readonly IUserCaseLogin login; 
 
         private readonly ITokenService tokenService;  
 
         private readonly IRedisCache rediscache; 
 
-        public AuthController(KeepData _mongoDbContext, ILogin _login, ITokenService _tokenService, IRedisCache _rediscache)
+        public AuthController(UserCaseKeepData _mongoDbContext, IUserCaseLogin _login, ITokenService _tokenService, IRedisCache _rediscache)
         {
 
             login = _login; 

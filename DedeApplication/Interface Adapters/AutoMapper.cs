@@ -13,9 +13,9 @@ namespace DedeApplication.Frameworks_Drivens
     {
         public AutoMapper()
         {
-            CreateMap<UsersDTO, Users>();
+            CreateMap<UsersDTO, UsersEntity>();
             CreateMap<DoctorDTO, UsersDTO>(); 
-            CreateMap<PatientsDTO, Patients>();
+            CreateMap<PatientsDTO, PatientsEntity>();
         }
     }
 }

@@ -10,25 +10,25 @@ using MongoDB.EntityFrameworkCore.Extensions;
 
 namespace DedeApplication.UsersCase.Database
 {
-    public class KeepData : DbContext
+    public class UserCaseKeepData : DbContext
     {
 
-        public KeepData(DbContextOptions<KeepData> options) : base(options) {
+        public UserCaseKeepData(DbContextOptions<UserCaseKeepData> options) : base(options) {
 
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Patients>().ToCollection("Patients");
-            modelBuilder.Entity<Users>().ToCollection("Users"); 
+            modelBuilder.Entity<PatientsEntity>().ToCollection("Patients");
+            modelBuilder.Entity<UsersEntity>().ToCollection("Users");
         }
 
      
 
-        public DbSet<Patients> Patients {get;set;} 
+        public DbSet<PatientsEntity> Patients {get;set;} 
 
-        public DbSet<Users> Users {get;set;} 
+        public DbSet<UsersEntity> Users {get;set;} 
 
     }
 }

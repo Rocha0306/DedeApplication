@@ -1,23 +1,20 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using DedeApplication.Interfaces;
 
-namespace DedeApplication.DTOs
+namespace DedeApplication.Entities
 {
-        public class PatientsDTO {
-            
-    public string Id = Guid.NewGuid().ToString(); 
-    [Required(ErrorMessage = "I need the patient name")]
-    public string NomePaciente {get; set;} 
+    public class PatientsEntity : IPatientEntity
+    {
+    public string Id {get;set;}
+    public string NomePaciente {get;set;}
 
-    [Required(ErrorMessage = "I need the visit date")]
-     public string DataVisita { get; set;} 
+
+    public string DataVisita { get; set; }
     public string Saps3 { get; set; }
     public string DihUti { get; set; }
-
-    [Required(ErrorMessage = "The diagnose is required, i need this")]
     public string Diagnostico { get; set; }
     public string FerramentasDiagnosticasPendentes { get; set; }
     
@@ -101,6 +98,6 @@ namespace DedeApplication.DTOs
     // Assinatura/Responsável
     public string MedicoDiarista { get; set; }
 
-    public string HospitalName {get;set;}
+    public string HospitalName {get;set;} 
     }
 }

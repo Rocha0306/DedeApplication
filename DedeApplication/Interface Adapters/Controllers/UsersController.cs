@@ -25,17 +25,17 @@ namespace DedeApplication.InterfaceAdapters.Controllers
      private readonly IExternalApis consultasAPI; 
 
 
-     private readonly IUserRegistration userRegistration; 
+     private readonly IUserCaseRegistration userRegistration; 
 
-     private readonly IUsers UsersEntity;
+     private readonly IUsersEntity UsersEntity;
 
-     private readonly Users users;
+     private readonly UsersEntity users;
 
      private readonly IMapper mapper; 
 
 
 
-     public UsersController(IExternalApis consultas, IUserRegistration _userRegistration, IUsers _users, IMapper imapper, IUsers users2)
+     public UsersController(IExternalApis consultas, IUserCaseRegistration _userRegistration, IUsersEntity _users, IMapper imapper, IUsersEntity users2)
      {
         consultasAPI = consultas;
         userRegistration = _userRegistration; 

@@ -2,12 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DedeApplication.DTOs;
 using DedeApplication.Entities;
+using DedeApplication.UsersCase;
 
 namespace DedeApplication.Interfaces
 {
-    public interface ILogin
+    public interface IUserCaseRegistration
     {
-        public Users Authentication(string CRMorEmail, string Password);
+        public void Registration(UsersEntity users);
+    
     }
 }
