@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AXQnchNj3K8=",
+  "dgSpecHash": "4XDsOft/DEY=",
   "success": true,
-  "projectFilePath": "C:\\DedeApplication\\DedeApplication\\DedeApplication.csproj",
+  "projectFilePath": "c:\\DedeApplication\\DedeApplication\\DedeApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Innove\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Innove\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",

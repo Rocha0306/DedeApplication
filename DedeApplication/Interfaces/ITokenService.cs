@@ -8,7 +8,7 @@ namespace DedeApplication.Interfaces
 {
     public interface ITokenService
     {
-        public string GeneratorToken(); 
+        public string GeneratorToken(string UserEntityRole); 
 
         public bool ValidatorToken(string UserToken); 
     }

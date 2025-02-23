@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\DedeApplication\\DedeApplication\\DedeApplication.csproj": {}
+    "c:\\DedeApplication\\DedeApplication\\DedeApplication.csproj": {}
   },
   "projects": {
-    "C:\\DedeApplication\\DedeApplication\\DedeApplication.csproj": {
+    "c:\\DedeApplication\\DedeApplication\\DedeApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\DedeApplication\\DedeApplication\\DedeApplication.csproj",
+        "projectUniqueName": "c:\\DedeApplication\\DedeApplication\\DedeApplication.csproj",
         "projectName": "DedeApplication",
-        "projectPath": "C:\\DedeApplication\\DedeApplication\\DedeApplication.csproj",
+        "projectPath": "c:\\DedeApplication\\DedeApplication\\DedeApplication.csproj",
         "packagesPath": "C:\\Users\\Innove\\.nuget\\packages\\",
-        "outputPath": "C:\\DedeApplication\\DedeApplication\\obj\\",
+        "outputPath": "c:\\DedeApplication\\DedeApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

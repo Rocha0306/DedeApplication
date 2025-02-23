@@ -33,16 +33,28 @@ namespace DedeApplication.InterfaceAdapters.Controllers
 
         
 
-
+        [HttpPost]
         public ActionResult<TokenDTO> Login([FromBody] LoginDTO loginDTO) {
             var Users = login.Authentication(loginDTO.CRMorEmail, loginDTO.CRMorEmail);
-            string Token = tokenService.GeneratorToken(); 
+            string Token = tokenService.GeneratorToken(Users.Role); 
             rediscache.PutInCache(Token, Users.HospitalName);
             return new TokenDTO(Token);  
 
             
         
-        }      
+        }   
+
+        [HttpDelete]
+        public ActionResult Logout() {
+            string Token = Request.Headers["Authorization"]; 
+            if(Token == null) {
+                return BadRequest("No token, wtf?");
+            }
+
+            rediscache.RemoveFromCache(Token); 
+            return Ok(); 
+
+        }  
     
     }
 }

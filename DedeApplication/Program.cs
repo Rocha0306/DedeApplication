@@ -19,7 +19,8 @@ var URI = builder.Configuration.GetValue<string>("URI");
 var database = builder.Configuration.GetValue<string>("Database");
 builder.Services.AddDbContext<UserCaseKeepData>(Options => Options.UseMongoDB(URI, database));
 builder.Services.AddSingleton<ITokenService, TokenService>();
-builder.Services.AllDependencies();
+builder.Services.AddScoped<Authorization>(); 
+builder.Services.AllDependencies(); 
 
 
 builder.Services.AddControllers();
@@ -46,7 +47,9 @@ app.UseRouting();
 // Middleware para autorizar (se necessário)
 app.UseMiddleware<AuthMiddleware>();
 
-app.UseMiddleware<ExceptionalHandler>(); 
+app.UseMiddleware<ExceptionalHandler>();
+
+app.UseAuthorization(); 
 
 // Mapeia controladores e endpoints
 app.MapControllers();

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DedeApplication.Entities;
 using DedeApplication.Interfaces;
 using DedeApplication.UsersCase.Database;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using MongoDB.Driver.Linq;
 
 namespace DedeApplication.UsersCase
@@ -13,7 +14,7 @@ namespace DedeApplication.UsersCase
     public class UserCasePatients : IUserCasePatients
     {
 
-        private readonly UserCaseKeepData keepData; 
+        private readonly UserCaseKeepData keepData;
         public UserCasePatients(UserCaseKeepData _keepData)
         {
             keepData = _keepData; 
@@ -22,6 +23,7 @@ namespace DedeApplication.UsersCase
         public PatientsEntity CreatePatients(PatientsEntity patients) {
               keepData.Patients.Add(patients);
               keepData.SaveChanges();
+              keepData.Dispose(); 
               return patients; 
 
                  
@@ -34,7 +36,8 @@ namespace DedeApplication.UsersCase
     }
 
         public PatientsEntity UpdatePatients(PatientsEntity patientsEntity) {
-                keepData.Patients.Update(patientsEntity); 
+
+                keepData.Patients.Update(patientsEntity);
                 keepData.SaveChanges();
                 return patientsEntity; 
         }

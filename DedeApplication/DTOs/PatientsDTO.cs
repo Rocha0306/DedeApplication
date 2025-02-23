@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace DedeApplication.DTOs
 {
-        public class PatientsDTO {
-            
-    public string Id = Guid.NewGuid().ToString(); 
+    public class PatientsDTO {    
+
+    [Required(ErrorMessage = "I need the ID, if you are using the POST he can be any value")]
+    public string Id {get;set;}
     [Required(ErrorMessage = "I need the patient name")]
     public string NomePaciente {get; set;} 
 
@@ -102,5 +103,9 @@ namespace DedeApplication.DTOs
     public string MedicoDiarista { get; set; }
 
     public string HospitalName {get;set;}
+
+
+
+
     }
 }

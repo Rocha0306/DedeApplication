@@ -29,7 +29,17 @@ namespace DedeApplication.InterfaceAdapters.ExternalServices
             ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect(AuthParams);
             IDatabase RedisDatabase = connectionMultiplexer.GetDatabase(); 
             string HospitalName = RedisDatabase.StringGet(Key); 
+            if(HospitalName == null) {
+                throw new BadHttpRequestException("He is not in cache i cant continue", 500); 
+            }
+            
             return HospitalName; 
+        }
+
+        public void RemoveFromCache(string Key) {
+            ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect(AuthParams);
+            IDatabase RedisDatabase = connectionMultiplexer.GetDatabase(); 
+            RedisDatabase.StringGetDelete(Key); 
         }
     }
 }
