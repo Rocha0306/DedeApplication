@@ -37,19 +37,6 @@ namespace DedeApplication.UsersCase
             //não haverá um acumulo de dados nas Listas devido ao lifetime scoped
         }
 
-        public async Task<HunterApiDTO> ValidateEmail(string email)
-        {
-            string request = $"https://api.hunter.io/v2/email-verifier?email={email}&api_key=9218837d07af1615522ee051fc78cac398c2e1c5"; 
-
-            HttpClient httpClient = new HttpClient();
-            HttpRequestMessage httpRequestMessage = new HttpRequestMessage();
-            Uri uri = new Uri(request);
-            httpRequestMessage.RequestUri = uri;
-            HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
-            CancellationToken cancellationToken = new CancellationToken();
-            var ResponseApi = await httpResponseMessage.Content.ReadFromJsonAsync<HunterApiDTO>(cancellationToken);
-            return ResponseApi;
-                
-        }
+    
     }
 }

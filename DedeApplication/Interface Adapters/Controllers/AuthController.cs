@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DedeApplication.DTOs;
 using DedeApplication.InterfaceAdapters.ExternalServices;
+using DedeApplication.InterfaceAdaptersExternalServices;
 using DedeApplication.Interfaces;
 using DedeApplication.UsersCase.Database;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +32,9 @@ namespace DedeApplication.InterfaceAdapters.Controllers
             rediscache = _rediscache;             
         }
 
+
+        
+
         
 
         [HttpPost]
@@ -54,6 +58,9 @@ namespace DedeApplication.InterfaceAdapters.Controllers
             rediscache.RemoveFromCache(Token); 
             return Ok(); 
 
+            
+
+            
         }  
     
     }

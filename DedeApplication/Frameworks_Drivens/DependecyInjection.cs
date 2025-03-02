@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using DedeApplication.Entities;
 using AutoMapper;
 using DedeApplication.InterfaceAdapters.ExternalServices;
+using DedeApplication.InterfaceAdaptersExternalServices;
 
 namespace DedeApplication.Frameworks_Drivens
 {     
@@ -27,6 +28,7 @@ namespace DedeApplication.Frameworks_Drivens
                 Services.AddScoped<IRedisCache, RedisCache>(); 
                 Services.AddScoped<IUserCasePatients, UserCasePatients>(); 
                 Services.AddScoped<IPatientEntity, PatientsEntity>(); 
+                Services.AddScoped<IEmailSender, EmailSender>(); 
                 return Services;
 
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\DedeApplication\\DedeApplication\\DedeApplication.csproj": {}
+    "C:\\DedeApplication\\DedeApplication\\DedeApplication.csproj": {}
   },
   "projects": {
-    "c:\\DedeApplication\\DedeApplication\\DedeApplication.csproj": {
+    "C:\\DedeApplication\\DedeApplication\\DedeApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\DedeApplication\\DedeApplication\\DedeApplication.csproj",
+        "projectUniqueName": "C:\\DedeApplication\\DedeApplication\\DedeApplication.csproj",
         "projectName": "DedeApplication",
-        "projectPath": "c:\\DedeApplication\\DedeApplication\\DedeApplication.csproj",
+        "projectPath": "C:\\DedeApplication\\DedeApplication\\DedeApplication.csproj",
         "packagesPath": "C:\\Users\\Innove\\.nuget\\packages\\",
-        "outputPath": "c:\\DedeApplication\\DedeApplication\\obj\\",
+        "outputPath": "C:\\DedeApplication\\DedeApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -53,6 +53,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[13.0.1, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.10.0, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",

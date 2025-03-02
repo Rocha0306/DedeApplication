@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Authorization.Policy;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MongoDB.Driver;
+using MongoDB.EntityFrameworkCore.Storage;
 using StackExchange.Redis;
 
 namespace DedeApplication.InterfaceAdapters.Controllers
@@ -47,7 +49,7 @@ namespace DedeApplication.InterfaceAdapters.Controllers
             string HospitalName = redis.GetFromCache(TokenKey); 
             patientsDTO.HospitalName = HospitalName;
             var Patients = new PatientsEntity();  
-             mapper.Map(patientsDTO, Patients); 
+            mapper.Map(patientsDTO, Patients);
             return Patients; 
 
          
@@ -62,7 +64,7 @@ namespace DedeApplication.InterfaceAdapters.Controllers
        [HttpPost] 
        public ActionResult<PatientsEntity> PostPatients([FromBody] PatientsDTO patientsDTO) {
          var Patients = GetHospitalPatientAndConvert(patientsDTO);
-         Patients.Id = new Guid().ToString();
+         Patients.Id = Guid.NewGuid().ToString();
          return Ok(UserCasePatients.CreatePatients(Patients)); 
         
          

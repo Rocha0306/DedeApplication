@@ -57,3 +57,8 @@ c:\DedeApplication\DedeApplication\bin\Debug\net8.0\NRedisStack.dll
 c:\DedeApplication\DedeApplication\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
 c:\DedeApplication\DedeApplication\bin\Debug\net8.0\StackExchange.Redis.dll
 c:\DedeApplication\DedeApplication\obj\Debug\net8.0\DedeApplication.sourcelink.json
+c:\DedeApplication\DedeApplication\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+c:\DedeApplication\DedeApplication\bin\Debug\net8.0\MailKit.dll
+c:\DedeApplication\DedeApplication\bin\Debug\net8.0\MimeKit.dll
+c:\DedeApplication\DedeApplication\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+c:\DedeApplication\DedeApplication\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

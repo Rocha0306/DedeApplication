@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using DedeApplication.Entities;
 using AutoMapper;
+using MongoDB.Bson;
 
 namespace DedeApplication.InterfaceAdapters.Controllers
 {
@@ -33,14 +34,20 @@ namespace DedeApplication.InterfaceAdapters.Controllers
 
      private readonly IMapper mapper; 
 
+     private readonly IRedisCache redisCache;
+
+     private readonly IEmailSender emailSender; 
 
 
-     public UsersController(IExternalApis consultas, IUserCaseRegistration _userRegistration, IUsersEntity _users, IMapper imapper, IUsersEntity users2)
+
+     public UsersController(IExternalApis consultas, IUserCaseRegistration _userRegistration, IUsersEntity _users, IMapper imapper, IUsersEntity users2, IRedisCache _redisCache, IEmailSender _emailSender)
      {
         consultasAPI = consultas;
         userRegistration = _userRegistration; 
         UsersEntity = _users; 
-        mapper = imapper; 
+        mapper = imapper;
+        redisCache = _redisCache;  
+        emailSender = _emailSender; 
 
      }
 
@@ -54,23 +61,22 @@ namespace DedeApplication.InterfaceAdapters.Controllers
         [HttpPost]
         public async Task<IActionResult> Registration([FromBody] UsersDTO usersDTO) {
 
-            if(usersDTO.Role.Equals("Doctor")) {
+    
             DoctorDTO doctorInformation = await consultasAPI.ValidateCRM(usersDTO.CRM, usersDTO.uf); 
             var Entity = mapper.Map(usersDTO, users); 
-            var DoctorEntity = UsersEntity.DoctorRegistration(doctorInformation.DoctorExist, doctorInformation.DoctorName, Entity); 
-            userRegistration.Registration(DoctorEntity);
-            return Ok("Boa");
+            var DoctorEntity = UsersEntity.DoctorRegistration(doctorInformation.DoctorExist, doctorInformation.DoctorName, Entity);  
+            string AuthNumber = emailSender.SendEmail(DoctorEntity.Email); 
+            redisCache.PutInCache(AuthNumber, DoctorEntity.ToJson());
+            return Ok("Good");
             
             }
+ 
 
-            else {
-                HunterApiDTO emailUser = await consultasAPI.ValidateEmail(usersDTO.Email); 
-                var Users = mapper.Map(usersDTO, users);
-                var SecretaryEntity = UsersEntity.SecretaryRegistration(emailUser.data.status, emailUser.data.result, emailUser.data.score, Users);
-                userRegistration.Registration(SecretaryEntity);
-                return Ok("Boa");
-            }
+        
 
+
+
+        
     
                 
     
@@ -83,4 +89,3 @@ namespace DedeApplication.InterfaceAdapters.Controllers
 
 
     }
-}

@@ -20,7 +20,6 @@ namespace DedeApplication.Entities
     public string Uf { get; set; }
     public string Password { get; set; }
     public string Role { get; set; }
-    public string HospitalName { get; set; }
 
 
     public UsersEntity()
@@ -30,20 +29,19 @@ namespace DedeApplication.Entities
 
         
 
-        public UsersEntity(string id, string name, string email, string role, string hospitalname, string password) 
+        public UsersEntity(string id, string name, string email, string role, string password) 
     {
         //Secretaria
 
        this.Id = id; 
        this.Name = name; 
        this.Email = email; 
-       this.Role = role; 
-       this.HospitalName = hospitalname; 
+       this.Role = role;
        this.Password = password; 
         
     }
 
-    public UsersEntity(string id, string name, string email, string crm, string uf, string password, string role, string hospitalname)
+    public UsersEntity(string id, string name, string email, string crm, string uf, string password, string role)
     {
             //Medico 
 
@@ -54,7 +52,6 @@ namespace DedeApplication.Entities
         this.Uf = uf;
         this.Password = password;
         this.Role = role;
-        this.HospitalName = hospitalname;
     }
 
 
@@ -124,11 +121,6 @@ namespace DedeApplication.Entities
         
         }
 
-        if(user.Role.Equals("Secretary")) {
-             if(user.Email.Equals(userdatabase.Email)) {
-                throw new BadHttpRequestException("This Users already exist", 400); 
-            }
-        }
     }
 
 

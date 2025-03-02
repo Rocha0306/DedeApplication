@@ -18,22 +18,24 @@ namespace DedeApplication.InterfaceAdapters.ExternalServices
 
     
 
-        public void PutInCache(string TokenKey, string HospitalName) {
+        public void PutInCache(string TokenKey, string Content) {
             var connectionMultiplexer = ConnectionMultiplexer.Connect(AuthParams);
             IDatabase RedisDatabase = connectionMultiplexer.GetDatabase();
-            RedisDatabase.StringSet(TokenKey, HospitalName);
+            RedisDatabase.StringSet(TokenKey, Content);
              
         }
+
+    
     
         public string GetFromCache(string Key) {
             ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect(AuthParams);
             IDatabase RedisDatabase = connectionMultiplexer.GetDatabase(); 
-            string HospitalName = RedisDatabase.StringGet(Key); 
-            if(HospitalName == null) {
+            string Content = RedisDatabase.StringGet(Key); 
+            if(Content == null) {
                 throw new BadHttpRequestException("He is not in cache i cant continue", 500); 
             }
             
-            return HospitalName; 
+            return Content; 
         }
 
         public void RemoveFromCache(string Key) {

@@ -35,7 +35,7 @@ public class AuthMiddleware {
     
         string endpointRequest = context.Request.GetDisplayUrl();
        
-      if(endpointRequest != "http://localhost:8080/Auth" && endpointRequest != "http://localhost:8080/Users") {
+      if(endpointRequest != "http://localhost:8080/Auth" && endpointRequest != "http://localhost:8080/Users" && !endpointRequest.Contains("http://localhost:8080/Verification")) {
         var UserToken = context.Request.Headers.Authorization;
         var Token = _tokenService.ValidatorToken(UserToken);
 
